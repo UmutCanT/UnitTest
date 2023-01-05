@@ -9,6 +9,20 @@ public class damage_calculator
     [Test]
     public void Sets_damage_to_half_with_50_percent_mitigation()
     {
+        // ACT
         int finalDamage = DamageCalculator.CalculateDamage(10, 0.5f);
+
+        //ASSERT
+        Assert.AreEqual(5, finalDamage);
+    }
+
+    [Test]
+    public void Calculates_2_damage_from_10_with_80_percent_mitigation()
+    {
+        // ACT
+        int finalDamage = DamageCalculator.CalculateDamage(10, 0.8f);
+
+        //ASSERT
+        Assert.AreEqual(2, finalDamage);
     }
 }
