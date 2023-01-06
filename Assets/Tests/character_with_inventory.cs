@@ -12,7 +12,7 @@ public class character_with_inventory
     {
         //ARRANGE
         ICharacter character=  Substitute.For<ICharacter>();
-        Inventory inventory = new Inventory();
+        Inventory inventory = new Inventory(character);
         Item pants = new Item() { EquipSlot = EquipSlots.Legs, Armor = 40 };
         Item shield = new Item() { EquipSlot = EquipSlots.RightHand, Armor = 50 };
 
