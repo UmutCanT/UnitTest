@@ -8,9 +8,9 @@ public class DamageCalculator
         return Convert.ToInt32(amount * multiplier);
     }
 
-    public static int CalculateDamage(int amount, Character character)
+    public static int CalculateDamage(int amount, ICharacter character)
     {
-        int totalArmor = character.Inventory.GetTotalArmor();
+        int totalArmor = character.Inventory.GetTotalArmor() + (character.Level *10);
         float multiplier = totalArmor / 100f;
         return CalculateDamage(amount, multiplier);
     }

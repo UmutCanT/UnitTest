@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using NSubstitute;
 
 public class character_with_inventory
 {
@@ -10,7 +11,7 @@ public class character_with_inventory
     public void With_90_armor_takes_10_percent_damage()
     {
         //ARRANGE
-        Character character= new Character();
+        ICharacter character=  Substitute.For<ICharacter>();
         Inventory inventory = new Inventory();
         Item pants = new Item() { EquipSlot = EquipSlots.Legs, Armor = 40 };
         Item shield = new Item() { EquipSlot = EquipSlots.RightHand, Armor = 50 };
@@ -18,7 +19,7 @@ public class character_with_inventory
         inventory.EquipItem(pants);
         inventory.EquipItem(shield);
 
-        character.Inventory= inventory;
+        character.Inventory.Returns(inventory);
 
         //ACT
         int calculatedDamage = DamageCalculator.CalculateDamage(1000, character);
